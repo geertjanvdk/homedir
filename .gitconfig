@@ -7,7 +7,7 @@
 
 [alias]
     top = log --pretty=format:'%Cred%h%Creset %G?%C(yellow)%d%Creset %s (%C(bold blue)%an%Creset, %Cgreen%cd%Creset)' --abbrev-commit --date=short -n 10
-        whenadded = log --diff-filter=A --format="%ci" --follow
+    whenadded = log --diff-filter=A --format="%ci" --follow
     l = log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
     lc = log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s'
 
@@ -28,3 +28,5 @@
 	else echo \"Copyright (c) $a, $c, Geert JM Vanderkelen\"; fi\
 	}; f"
 
+[core]
+	pager = less -F -E -~ -X
