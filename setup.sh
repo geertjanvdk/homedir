@@ -83,5 +83,25 @@ setup_zsh ()
 	echo "done!"
 }
 
+###
+### Git
+###
+setup_git ()
+{
+	if [ -s .gitconfig ]; then
+		echo "Skipping Git."
+		return
+	fi
+
+	echo -n "Set up Git .. "
+	backup ${HOME}/.gitconfig gitconfig
+
+	ln -s ${HD}/gitconfig ${HOME}/.gitconfig
+	chmod 0600 ${HD}/gitconfig
+
+	echo "done!"
+}
+
 setup_ssh
 setup_zsh
+setup_git
