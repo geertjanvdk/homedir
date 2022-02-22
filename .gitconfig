@@ -1,3 +1,30 @@
 [user]
 	name = Geert JM Vanderkelen
 	email = geert@vanderkelen.org
+
+[init]
+	defaultBranch = main
+
+[alias]
+    top = log --pretty=format:'%Cred%h%Creset %G?%C(yellow)%d%Creset %s (%C(bold blue)%an%Creset, %Cgreen%cd%Creset)' --abbrev-commit --date=short -n 10
+        whenadded = log --diff-filter=A --format="%ci" --follow
+    l = log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
+    lc = log --all --graph --pretty=format:'%C(auto)%h%C(auto)%d %s'
+
+    lgc = log --graph --abbrev-commit --decorate \
+        --format=format:'%C(bold blue)%h%C(reset) %s %C(green)%d%C(reset)%n'
+
+    tags = log --oneline --decorate --tags --no-walk
+
+    changed = diff --name-only HEAD^
+
+    yearchanged = log --follow --pretty=format:"%ad" -1 --date=format:"%Y"
+    yearadded = log --follow --diff-filter=A --pretty=format:"%ad" --date=format:"%Y"
+
+    copyright = "!f() { \
+	a=$(git log --follow --diff-filter=A --pretty=format:\"%ad\" --date=format:\"%Y\" -- $1);\
+	c=$(git log --follow --pretty=format:\"%ad\" -1 --date=format:\"%Y\" -- $1);\
+	if [ \"$a\" == \"$c\" ]; then echo \"Copyright (c) $a, Geert JM Vanderkelen\";\
+	else echo \"Copyright (c) $a, $c, Geert JM Vanderkelen\"; fi\
+	}; f"
+
