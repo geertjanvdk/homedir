@@ -6,10 +6,10 @@ if [ "$(dirname $HD)" != "$HOME" ]; then
 	echo "homedir project must be subfolder of $HOME"
 	exit 1
 fi
+echo $HD
 
 USER_GROUP=$(id -gn ${USER})
 BACKUP_DIR=${HOME}/.backup_homedir
-
 cd ${HOME}
 
 backup ()
@@ -40,19 +40,21 @@ backup ()
 ## SSH
 ##
 setup_ssh () {
-	if [ -s .ssh/authorized_keys ]; then
+	if [ -L ${HOME}/.ssh/authorized_keys ]; then
 		echo "Skipping SSH."
 		return
 	fi
 
 	echo -n "Set up SSH .. "
-	backup_ssh=${BACKUP_DIR}/ssh
 
-	if [ -d .ssh ]; then
-		backup ${HOME}/.ssh ssh
+	if [ -f ${HOME}/.ssh/authorized_keys ]; then
+		mkdir -p ${BACKUP_DIR}/ssh
+		backup ${HOME}/.ssh/authorized_keys ssh
 	fi
 
-	mkdir .ssh
+	if [ ! -d ${HOME}/.ssh ]; then
+		mkdir ${HOME}/.ssh
+	fi
 
 	chown -R ${USER}:${USER_GROUP} ${HOME}/.ssh/
 	chmod 0700 ${HOME}/.ssh/
@@ -69,7 +71,7 @@ setup_ssh () {
 ###
 setup_zsh ()
 {
-	if [ -s .zshrc ]; then
+	if [ -L .zshrc ]; then
 		echo "Skipping ZSH."
 		return
 	fi
@@ -88,7 +90,7 @@ setup_zsh ()
 ###
 setup_git ()
 {
-	if [ -s .gitconfig ]; then
+	if [ -L .gitconfig ]; then
 		echo "Skipping Git."
 		return
 	fi
