@@ -30,3 +30,5 @@
 
 [core]
 	pager = less -F -E -~ -X
+[pull]
+	rebase = true
