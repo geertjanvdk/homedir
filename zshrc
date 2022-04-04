@@ -105,3 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias k="minikube kubectl --"
+
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
