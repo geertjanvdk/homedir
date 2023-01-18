@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e -o pipefail
+set -e
 
 HD=$(cd "$(dirname $0)"; pwd)
 if [ "$(dirname $HD)" != "$HOME" ]; then
@@ -14,12 +14,12 @@ cd ${HOME}
 
 backup ()
 {
-	if [ "$1" == "" ]; then
+	if [ "$1" = "" ]; then
 		echo "source missing for backup"
 		exit 1
 	fi
 
-	if [ "$2" == "" ]; then
+	if [ "$2" = "" ]; then
 		echo "destination missing for backup"
 		exit 1
 	fi
@@ -44,12 +44,12 @@ setup_basic_config_file ()
 	dst="${HOME}/${3}"
 	backup_file="${3}"
 
-	if [ "${src}" == "" ]; then
+	if [ "${src}" = "" ]; then
 		echo "(panic) source not provided"
 		exit 1
 	fi
 
-	if [ "${dst}" == "" ]; then
+	if [ "${dst}" = "" ]; then
 		echo "(panic) destination not provided"
 		exit 1
 	fi
