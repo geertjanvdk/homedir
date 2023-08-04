@@ -106,6 +106,11 @@ source $ZSH/oh-my-zsh.sh
 
 alias k="minikube kubectl --"
 
+alarm () {
+  while true; do afplay /System/Library/Sounds/Submarine.aiff -v 10 ; sleep 1; done
+}
+
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
+
