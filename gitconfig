@@ -1,9 +1,12 @@
 [user]
-	name = Geert JM Vanderkelen
+	name = Geert Vanderkelen
 	email = geert@vanderkelen.org
 
 [init]
 	defaultBranch = main
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 
 [alias]
     top = log --pretty=format:'%Cred%h%Creset %G?%C(yellow)%d%Creset %s (%C(bold blue)%an%Creset, %Cgreen%cd%Creset)' --abbrev-commit --date=short -n 10
@@ -32,3 +35,8 @@
 	pager = less -F -E -~ -X
 [pull]
 	rebase = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
