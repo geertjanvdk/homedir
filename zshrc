@@ -109,6 +109,10 @@ alarm () {
   while true; do afplay /System/Library/Sounds/Submarine.aiff -v 10 ; sleep 1; done
 }
 
+if command -v -- "op" >/dev/null 2>&1; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
+
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
