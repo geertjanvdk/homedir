@@ -6,12 +6,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.homedir/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gnzh"
+ZSH_THEME="steeef"
 
 if [[ $__INTELLIJ_COMMAND_HISTFILE__ ]]; then
-  ZSH_THEME="robbyrussell"
-else
-  ZSH_THEME="gnzh"
+  ZSH_THEME="steeef"
 fi
 
 # Set list of themes to pick from when loading at random
@@ -107,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 alias k="minikube kubectl --"
 
 alarm () {
+  echo "Job done!"
   while true; do afplay /System/Library/Sounds/Submarine.aiff -v 10 ; sleep 1; done
 }
 
