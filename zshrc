@@ -113,6 +113,10 @@ if command -v -- "op" >/dev/null 2>&1; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
+if test -x /opt/homebrew/bin/brew >/dev/null 2>&1; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
