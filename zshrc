@@ -1,13 +1,6 @@
 autoload -U +X compinit && compinit
 
 #
-# Powerlevel10k prompt (close to top)
-#
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-#
 # Homebrew
 #
 if test -x /opt/homebrew/bin/brew >/dev/null 2>&1; then
@@ -32,10 +25,7 @@ if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
-#
-# Powerlevel10k (at bottom)
-#
-if command -v -- "brew" >/dev/null 2>&1; then
-  source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+if command -v -- "starship" >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
 fi
-[[ ! -f ~/.homedir/p10k.zsh ]] || source ~/.homedir/p10k.zsh
+
