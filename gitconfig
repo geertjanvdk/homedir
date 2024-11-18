@@ -5,8 +5,12 @@
 [init]
 	defaultBranch = main
 
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+[url "ssh://git@github.com/gvanderk"]
+	insteadOf = https://github.com/gvanderk
+[url "ssh://git@github.com/golistic"]
+	insteadOf = https://github.com/golistic
+[url "ssh://git@github.com/golistica"]
+	insteadOf = https://github.com/golistica
 
 [alias]
     top = log --pretty=format:'%Cred%h%Creset %G?%C(yellow)%d%Creset %s (%C(bold blue)%an%Creset, %Cgreen%cd%Creset)' --abbrev-commit --date=short -n 10
